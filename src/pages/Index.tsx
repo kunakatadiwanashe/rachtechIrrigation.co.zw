@@ -6,6 +6,7 @@ import WhyChooseUs from "@/components/WhyChooseUs";
 import Projects from "@/components/Projects";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
+import WhatsAppButton from "@/components/Whatsapp";
 
 const Index = () => {
   return (
@@ -18,6 +19,8 @@ const Index = () => {
       <Projects />
       <Contact />
       <Footer />
+    <WhatsAppButton  />
+      
     </div>
   );
 };
