@@ -5,12 +5,12 @@ const About = () => {
     {
       icon: Target,
       title: "Our Mission",
-      description: "To provide efficient and sustainable water solutions that empower communities, farms, and businesses to thrive.",
+      description: "To advance modern agriculture through innovative irrigation and integrated water-management solutions that enhance efficiency, reliability, and sustainability.",
     },
     {
       icon: Eye,
       title: "Our Vision",
-      description: "To be the leading provider of borehole drilling and irrigation solutions in Zimbabwe and beyond.",
+      description: "To be the preferred choice for water and energy solutions, recognized for our expertise,innovation, and commitment to a sustainable future.",
     },
     {
       icon: Award,
