@@ -1,7 +1,7 @@
 import { useState } from "react";
-import project1 from "@/assets/project-borehole.jpg";
-import project2 from "@/assets/project-irrigation.jpg";
-import project3 from "@/assets/project-pump.jpg";
+import project1 from "@/assets/imgs/pic (3).jpeg";
+import project2 from "@/assets/imgs/pic (14).jpeg";
+import project3 from "@/assets/imgs/pic (10).jpeg";
 import project4 from "@/assets/project-farm.jpg";
 import { Link } from "lucide-react";
 
@@ -100,7 +100,7 @@ const Projects = () => {
                 <img
                   src={project.image}
                   alt={project.title}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                  className="w-full h-full object-cover  group-hover:scale-110 transition-transform duration-500"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-foreground/60 to-transparent" />
                 <div className="absolute bottom-4 left-4 right-4">
