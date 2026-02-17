@@ -2,14 +2,40 @@ import { useState } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/Whatsapp";
-import project1 from "@/assets/project-borehole.jpg";
-import project2 from "@/assets/project-irrigation.jpg";
-import project3 from "@/assets/project-pump.jpg";
-import project4 from "@/assets/project-farm.jpg";
+import {
+  Pagination,
+  PaginationContent,
+  PaginationItem,
+  PaginationLink,
+  PaginationNext,
+  PaginationPrevious,
+} from "@/components/ui/pagination";
+
+
+
+import project1 from "@/assets/imgs/pic (1).jpeg";
+import project2 from "@/assets/imgs/pic (2).jpeg";
+import project3 from "@/assets/imgs/pic (3).jpeg";
+import project4 from "@/assets/imgs/pic (10).jpeg";
+import project5 from "@/assets/imgs/pic (5).jpeg";
+import project6 from "@/assets/imgs/pic (6).jpeg";
+import project7 from "@/assets/imgs/pic (7).jpeg";
+import project8 from "@/assets/imgs/pic (8).jpeg";
+import project9 from "@/assets/imgs/pic (9).jpeg";
+import project10 from "@/assets/imgs/pic (10).jpeg";
+import project11 from "@/assets/imgs/pic (11).jpeg";
+import project12 from "@/assets/imgs/pic (12).jpeg";
+
+
+
+
+
 import { MapPin } from "lucide-react";
 
 const ProjectsPage = () => {
   const [activeFilter, setActiveFilter] = useState("all");
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 6;
 
   const filters = [
     { id: "all", label: "All Projects" },
@@ -59,11 +85,118 @@ const ProjectsPage = () => {
       year: "2022",
       client: "Agricultural Enterprise",
     },
+        {
+      id: 5,
+      category: "irrigation",
+      title: "Center Pivot Installation",
+      location: "Commercial Farm",
+      image: project5,
+      description: "20-hectare center pivot irrigation system",
+      year: "2022",
+      client: "Agricultural Enterprise",
+    },
+        {
+      id: 6,
+      category: "irrigation",
+      title: "Center Pivot Installation",
+      location: "Commercial Farm",
+      image: project6,
+      description: "20-hectare center pivot irrigation system",
+      year: "2022",
+      client: "Agricultural Enterprise",
+    },
+        {
+      id: 7,
+      category: "irrigation",
+      title: "Center Pivot Installation",
+      location: "Commercial Farm",
+      image: project7,
+      description: "20-hectare center pivot irrigation system",
+      year: "2022",
+      client: "Agricultural Enterprise",
+    },
+        {
+      id: 8,
+      category: "irrigation",
+      title: "Center Pivot Installation",
+      location: "Commercial Farm",
+      image: project8,
+      description: "20-hectare center pivot irrigation system",
+      year: "2022",
+      client: "Agricultural Enterprise",
+    },
+        {
+      id: 9,
+      category: "irrigation",
+      title: "Center Pivot Installation",
+      location: "Commercial Farm",
+      image: project9,
+      description: "20-hectare center pivot irrigation system",
+      year: "2022",
+      client: "Agricultural Enterprise",
+    },
+        {
+      id: 10,
+      category: "irrigation",
+      title: "Center Pivot Installation",
+      location: "Commercial Farm",
+      image: project10,
+      description: "20-hectare center pivot irrigation system",
+      year: "2022",
+      client: "Agricultural Enterprise",
+    },
   ];
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   const filteredProjects = activeFilter === "all" 
     ? projects 
     : projects.filter(p => p.category === activeFilter);
+
+  // Pagination logic
+  const totalPages = Math.ceil(filteredProjects.length / itemsPerPage);
+  const paginatedProjects = filteredProjects.slice(
+    (currentPage - 1) * itemsPerPage,
+    currentPage * itemsPerPage
+  );
+
+  const handleFilterChange = (filterId: string) => {
+    setActiveFilter(filterId);
+    setCurrentPage(1);
+  };
 
   return (
     <div className="min-h-screen bg-background">
@@ -116,7 +249,7 @@ const ProjectsPage = () => {
             {filters.map((filter) => (
               <button
                 key={filter.id}
-                onClick={() => setActiveFilter(filter.id)}
+                onClick={() => handleFilterChange(filter.id)}
                 className={`px-6 py-2 rounded-full font-medium transition-all duration-300 ${
                   activeFilter === filter.id
                     ? "bg-gradient-water text-primary-foreground shadow-soft"
@@ -129,8 +262,8 @@ const ProjectsPage = () => {
           </div>
 
           {/* Projects Grid */}
-          <div className="grid md:grid-cols-2 gap-8">
-            {filteredProjects.map((project) => (
+          <div className="grid md:grid-cols-3 gap-8">
+            {paginatedProjects.map((project) => (
               <div
                 key={project.id}
                 className="group bg-card rounded-2xl overflow-hidden shadow-card hover:shadow-elevated transition-all duration-300"
@@ -139,7 +272,7 @@ const ProjectsPage = () => {
                   <img
                     src={project.image}
                     alt={project.title}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                    className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-500"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-foreground/70 to-transparent" />
                   <div className="absolute top-4 right-4">
@@ -176,6 +309,39 @@ const ProjectsPage = () => {
               <p className="text-muted-foreground text-lg">
                 No projects found in this category.
               </p>
+            </div>
+          )}
+
+          {/* Pagination */}
+          {totalPages > 1 && (
+            <div className="mt-12">
+              <Pagination>
+                <PaginationContent>
+                  <PaginationItem>
+                    <PaginationPrevious 
+                      onClick={() => setCurrentPage(prev => Math.max(1, prev - 1))}
+                      className={currentPage === 1 ? "pointer-events-none opacity-50" : "cursor-pointer"}
+                    />
+                  </PaginationItem>
+                  {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
+                    <PaginationItem key={page}>
+                      <PaginationLink 
+                        onClick={() => setCurrentPage(page)}
+                        isActive={currentPage === page}
+                        className="cursor-pointer"
+                      >
+                        {page}
+                      </PaginationLink>
+                    </PaginationItem>
+                  ))}
+                  <PaginationItem>
+                    <PaginationNext 
+                      onClick={() => setCurrentPage(prev => Math.min(totalPages, prev + 1))}
+                      className={currentPage === totalPages ? "pointer-events-none opacity-50" : "cursor-pointer"}
+                    />
+                  </PaginationItem>
+                </PaginationContent>
+              </Pagination>
             </div>
           )}
         </div>
