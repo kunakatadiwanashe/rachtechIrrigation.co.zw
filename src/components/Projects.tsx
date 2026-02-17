@@ -3,6 +3,7 @@ import project1 from "@/assets/project-borehole.jpg";
 import project2 from "@/assets/project-irrigation.jpg";
 import project3 from "@/assets/project-pump.jpg";
 import project4 from "@/assets/project-farm.jpg";
+import { Link } from "lucide-react";
 
 const Projects = () => {
   const [activeFilter, setActiveFilter] = useState("all");
@@ -117,6 +118,11 @@ const Projects = () => {
           ))}
         </div>
       </div>
+
+
+
+
+      <Link href="/projects"></Link>
     </section>
   );
 };
