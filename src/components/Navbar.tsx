@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Menu, X, Phone, Droplets } from "lucide-react";
+import { Menu, X, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 
@@ -20,6 +20,22 @@ const Navbar = () => {
     { name: "Contact", href: "#contact" },
   ];
 
+  // Helper component to handle both anchor links and React Router links
+  const NavLink = ({ href, children, className, onClick }: { href: string; children: React.ReactNode; className?: string; onClick?: () => void }) => {
+    if (href.startsWith("#")) {
+      return (
+        <a href={href} className={className} onClick={onClick}>
+          {children}
+        </a>
+      );
+    }
+    return (
+      <Link to={href} className={className} onClick={onClick}>
+        {children}
+      </Link>
+    );
+  };
+
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-md border-b border-border">
       <div className="container-custom section-padding py-4">
@@ -39,13 +55,13 @@ const Navbar = () => {
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center gap-8">
             {navLinks.map((link) => (
-              <a
+              <NavLink
                 key={link.name}
                 href={link.href}
                 className="text-muted-foreground hover:text-primary transition-colors font-medium"
               >
                 {link.name}
-              </a>
+              </NavLink>
             ))}
           </div>
 
@@ -79,14 +95,14 @@ const Navbar = () => {
           <div className="lg:hidden mt-4 pb-4 border-t border-border pt-4 animate-fade-in">
             <div className="flex flex-col gap-4">
               {navLinks.map((link) => (
-                <a
+                <NavLink
                   key={link.name}
                   href={link.href}
                   className="text-muted-foreground hover:text-primary transition-colors font-medium py-2"
                   onClick={() => setIsOpen(false)}
                 >
                   {link.name}
-                </a>
+                </NavLink>
               ))}
               <Button asChild className="bg-gradient-water hover:opacity-90 transition-opacity mt-2">
                 <a href="#contact" onClick={() => setIsOpen(false)}>Get a Quote</a>
