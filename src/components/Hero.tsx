@@ -1,12 +1,13 @@
 import { ArrowRight, CheckCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import heroImage from "@/assets/hero-borehole.jpg";
+import heroImage from "@/assets/bore.jpeg";
 
 const Hero = () => {
   const highlights = [
     "Professional Borehole Drilling",
     "Quality Irrigation Equipment",
     "Expert Water Solutions",
+    "Expert Solar  Specialists",
   ];
 
   return (
@@ -21,7 +22,7 @@ const Hero = () => {
           {/* Text Content */}
           <div className="animate-slide-up">
             <span className="inline-block px-4 py-2 rounded-full bg-water-light text-primary font-semibold text-sm mb-6">
-              Trusted Water Solutions Since Day One
+              Trusted Water And Solar Solutions Since Day One
             </span>
             
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight mb-6">
@@ -65,7 +66,7 @@ const Hero = () => {
               <img
                 src={heroImage}
                 alt="Professional borehole drilling and irrigation equipment"
-                className="w-full h-[500px] object-cover"
+                className="w-full h-[500px] object-cover object-bottom"
               />
               {/* Overlay gradient */}
               <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent" />

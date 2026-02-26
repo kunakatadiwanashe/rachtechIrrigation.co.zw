@@ -1,4 +1,5 @@
-import { useState } from "react";
+
+import { useState, useMemo } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/Whatsapp";
@@ -11,26 +12,30 @@ import {
   PaginationPrevious,
 } from "@/components/ui/pagination";
 
+// Icons
+import { MapPin, Calendar, ArrowRight } from "lucide-react";
 
-
+// Asset Imports (Keeping your existing imports)
 import project1 from "@/assets/imgs/pic (1).jpeg";
 import project2 from "@/assets/imgs/pic (2).jpeg";
-import project3 from "@/assets/imgs/pic (3).jpeg";
 import project4 from "@/assets/imgs/pic (10).jpeg";
 import project5 from "@/assets/imgs/pic (5).jpeg";
-import project6 from "@/assets/imgs/pic (6).jpeg";
-import project7 from "@/assets/imgs/pic (7).jpeg";
-import project8 from "@/assets/imgs/pic (8).jpeg";
-import project9 from "@/assets/imgs/pic (9).jpeg";
-import project10 from "@/assets/imgs/pic (10).jpeg";
-import project11 from "@/assets/imgs/pic (11).jpeg";
-import project12 from "@/assets/imgs/pic (12).jpeg";
+import p1 from "@/assets/1 (1).jpeg";
+import p2 from "@/assets/1 (2).jpeg";
+import p3 from "@/assets/1 (3).jpeg";
+import p4 from "@/assets/1 (4).jpeg";
+import p5 from "@/assets/1 (5).jpeg";
+import cen from "@/assets/project-farm.jpg";
 
-
-
-
-
-import { MapPin } from "lucide-react";
+interface Project {
+  id: number;
+  category: string;
+  title: string;
+  location: string;
+  image: string;
+  description: string;
+  year: string;
+}
 
 const ProjectsPage = () => {
   const [activeFilter, setActiveFilter] = useState("all");
@@ -42,18 +47,21 @@ const ProjectsPage = () => {
     { id: "borehole", label: "Boreholes" },
     { id: "irrigation", label: "Irrigation" },
     { id: "pumps", label: "Pumps" },
+    { id: "Water capacity testing", label: "Water Testing" },
+    { id: "Home solar systems", label: "Solar Systems" },
+    { id: "Piped water scheme", label: "Water Schemes" },
+    { id: "Sanitation & Hygiene Infrastructure", label: "Sanitation" },
   ];
 
-  const projects = [
+  const projects: Project[] = [
     {
       id: 1,
       category: "borehole",
       title: "Commercial Borehole",
       location: "Bulawayo Industrial",
       image: project1,
-      description: "120m deep borehole with submersible pump installation",
+      description: "120m deep borehole with submersible pump installation for industrial use.",
       year: "2023",
-      client: "Industrial Client",
     },
     {
       id: 2,
@@ -61,132 +69,80 @@ const ProjectsPage = () => {
       title: "Drip Irrigation System",
       location: "Matabeleland Farm",
       image: project2,
-      description: "5-hectare drip irrigation for vegetable production",
+      description: "5-hectare precision drip irrigation setup for sustainable vegetable production.",
       year: "2023",
-      client: "Commercial Farm",
     },
     {
       id: 3,
       category: "pumps",
       title: "Solar Pump System",
       location: "Rural Community",
-      image: project3,
-      description: "Solar-powered water pumping for community use",
+      image: p1,
+      description: "Off-grid solar-powered water pumping solution providing reliable community access.",
       year: "2022",
-      client: "Community Project",
     },
     {
       id: 4,
       category: "irrigation",
       title: "Center Pivot Installation",
       location: "Commercial Farm",
-      image: project4,
-      description: "20-hectare center pivot irrigation system",
+      image: cen,
+      description: "High-efficiency 20-hectare center pivot system for large-scale grain farming.",
       year: "2022",
-      client: "Agricultural Enterprise",
     },
-        {
+    {
       id: 5,
       category: "irrigation",
-      title: "Center Pivot Installation",
-      location: "Commercial Farm",
+      title: "Estate Irrigation",
+      location: "Mazowe Valley",
       image: project5,
-      description: "20-hectare center pivot irrigation system",
+      description: "Advanced hydration systems tailored for citrus and export crop management.",
       year: "2022",
-      client: "Agricultural Enterprise",
     },
-        {
+    {
       id: 6,
-      category: "irrigation",
-      title: "Center Pivot Installation",
-      location: "Commercial Farm",
-      image: project6,
-      description: "20-hectare center pivot irrigation system",
+      category: "Piped water scheme",
+      title: "Urban Water Reticulation",
+      location: "Harare North",
+      image: p4,
+      description: "Full-scale distribution network connecting over 50 households to clean water.",
       year: "2022",
-      client: "Agricultural Enterprise",
     },
-        {
+    {
       id: 7,
-      category: "irrigation",
-      title: "Center Pivot Installation",
-      location: "Commercial Farm",
-      image: project7,
-      description: "20-hectare center pivot irrigation system",
+      category: "Water capacity testing",
+      title: "Yield & Purity Analysis",
+      location: "Gweru District",
+      image: p5,
+      description: "Comprehensive 24-hour constant rate discharge test and chemical water analysis.",
       year: "2022",
-      client: "Agricultural Enterprise",
     },
-        {
-      id: 8,
-      category: "irrigation",
-      title: "Center Pivot Installation",
-      location: "Commercial Farm",
-      image: project8,
-      description: "20-hectare center pivot irrigation system",
-      year: "2022",
-      client: "Agricultural Enterprise",
-    },
-        {
+    {
       id: 9,
-      category: "irrigation",
-      title: "Center Pivot Installation",
-      location: "Commercial Farm",
-      image: project9,
-      description: "20-hectare center pivot irrigation system",
+      category: "Sanitation & Hygiene Infrastructure",
+      title: "Community Wash Station",
+      location: "Nkayi Rural",
+      image: p3,
+      description: "Multi-purpose infrastructure featuring cattle troughs and hygiene stations.",
       year: "2022",
-      client: "Agricultural Enterprise",
     },
-        {
+    {
       id: 10,
-      category: "irrigation",
-      title: "Center Pivot Installation",
-      location: "Commercial Farm",
-      image: project10,
-      description: "20-hectare center pivot irrigation system",
+      category: "Sanitation & Hygiene Infrastructure",
+      title: "Public Sanitation Block",
+      location: "Beitbridge Outpost",
+      image: p2,
+      description: "Sustainable sanitation facilities integrated with solar lighting for safety.",
       year: "2022",
-      client: "Agricultural Enterprise",
     },
   ];
 
+  const filteredProjects = useMemo(() => {
+    return activeFilter === "all"
+      ? projects
+      : projects.filter((p) => p.category === activeFilter);
+  }, [activeFilter, projects]);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  const filteredProjects = activeFilter === "all" 
-    ? projects 
-    : projects.filter(p => p.category === activeFilter);
-
-  // Pagination logic
   const totalPages = Math.ceil(filteredProjects.length / itemsPerPage);
   const paginatedProjects = filteredProjects.slice(
     (currentPage - 1) * itemsPerPage,
@@ -201,102 +157,88 @@ const ProjectsPage = () => {
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
-      
+
       {/* Hero Section */}
-      <section className="pt-24 pb-16 bg-gradient-to-b from-primary/10 to-background">
-        <div className="container-custom">
+      <section className="pt-32 pb-16 bg-gradient-to-b from-primary/5 via-background to-background">
+        <div className="container-custom px-4">
           <div className="text-center max-w-3xl mx-auto">
-            <span className="inline-block px-4 py-2 rounded-full bg-water-light text-primary font-semibold text-sm mb-6">
-              Our Portfolio
+            <span className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary font-bold text-xs uppercase tracking-widest mb-6">
+              Proven Results
             </span>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6">
-              Completed{" "}
-              <span className="text-gradient-nature">Projects</span>
+            <h1 className="text-4xl md:text-6xl font-extrabold text-foreground mb-6 tracking-tight">
+              Our <span className="text-primary">Project</span> Gallery
             </h1>
-            <p className="text-lg md:text-xl text-muted-foreground">
-              Explore our comprehensive portfolio of successful water solutions, 
-              borehole drilling, and irrigation installations across Zimbabwe.
+            <p className="text-lg text-muted-foreground">
+              A showcase of our commitment to sustainable water management and agricultural excellence across Zimbabwe.
             </p>
           </div>
         </div>
       </section>
 
       {/* Projects Section */}
-      <section className="section-padding bg-muted/30">
+      <section className="pb-24 px-4">
         <div className="container-custom">
-          {/* Stats */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12">
-            <div className="text-center p-6 bg-card rounded-xl shadow-card">
-              <div className="text-3xl md:text-4xl font-bold text-primary mb-2">50+</div>
-              <div className="text-sm text-muted-foreground">Projects Completed</div>
-            </div>
-            <div className="text-center p-6 bg-card rounded-xl shadow-card">
-              <div className="text-3xl md:text-4xl font-bold text-primary mb-2">15+</div>
-              <div className="text-sm text-muted-foreground">Years Experience</div>
-            </div>
-            <div className="text-center p-6 bg-card rounded-xl shadow-card">
-              <div className="text-3xl md:text-4xl font-bold text-primary mb-2">100%</div>
-              <div className="text-sm text-muted-foreground">Client Satisfaction</div>
-            </div>
-            <div className="text-center p-6 bg-card rounded-xl shadow-card">
-              <div className="text-3xl md:text-4xl font-bold text-primary mb-2">24/7</div>
-              <div className="text-sm text-muted-foreground">Support Available</div>
-            </div>
-          </div>
-
-          {/* Filters */}
-          <div className="flex flex-wrap justify-center gap-4 mb-12">
-            {filters.map((filter) => (
+          
+          {/* Filter Bar */}
+          <div className="flex flex-wrap justify-center gap-3 mb-16">
+            {filters.map((f) => (
               <button
-                key={filter.id}
-                onClick={() => handleFilterChange(filter.id)}
-                className={`px-6 py-2 rounded-full font-medium transition-all duration-300 ${
-                  activeFilter === filter.id
-                    ? "bg-gradient-water text-primary-foreground shadow-soft"
-                    : "bg-card text-muted-foreground hover:text-primary border border-border"
+                key={f.id}
+                onClick={() => handleFilterChange(f.id)}
+                className={`px-6 py-2 rounded-full text-sm font-semibold transition-all duration-300 ${
+                  activeFilter === f.id
+                    ? "bg-primary text-primary-foreground shadow-lg shadow-primary/20 scale-105"
+                    : "bg-muted text-muted-foreground hover:bg-muted/80 hover:text-foreground"
                 }`}
               >
-                {filter.label}
+                {f.label}
               </button>
             ))}
           </div>
 
-          {/* Projects Grid */}
-          <div className="grid md:grid-cols-3 gap-8">
+          {/* Grid */}
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {paginatedProjects.map((project) => (
               <div
                 key={project.id}
-                className="group bg-card rounded-2xl overflow-hidden shadow-card hover:shadow-elevated transition-all duration-300"
+                className="group bg-card rounded-2xl overflow-hidden border border-border/40 hover:border-primary/30 transition-all duration-500 hover:shadow-2xl hover:shadow-primary/5"
               >
-                <div className="relative h-72 overflow-hidden">
+                <div className="relative h-64 overflow-hidden">
                   <img
                     src={project.image}
                     alt={project.title}
-                    className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-500"
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-foreground/70 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent" />
+                  
                   <div className="absolute top-4 right-4">
-                    <span className="inline-block px-3 py-1 rounded-full bg-primary text-primary-foreground text-xs font-semibold capitalize">
+                    <span className="px-3 py-1 rounded-md bg-primary text-primary-foreground text-[10px] uppercase font-bold tracking-tighter">
                       {project.category}
                     </span>
                   </div>
-                  <div className="absolute bottom-4 left-4 right-4">
-                    <span className="inline-block px-3 py-1 rounded-full bg-background/80 text-foreground text-xs font-semibold mb-2">
+
+                  <div className="absolute bottom-4 left-6 right-6">
+                    <div className="flex items-center gap-2 text-primary text-xs font-bold mb-1">
+                      <Calendar className="w-3.5 h-3.5" />
                       {project.year}
-                    </span>
-                    <h3 className="text-xl md:text-2xl font-bold text-primary-foreground">{project.title}</h3>
+                    </div>
+                    <h3 className="text-xl font-bold text-white tracking-tight leading-tight">
+                      {project.title}
+                    </h3>
                   </div>
                 </div>
+
                 <div className="p-6">
-                  <p className="text-muted-foreground mb-4">{project.description}</p>
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-2 text-primary font-medium">
-                      <MapPin className="w-4 h-4" />
-                      <span>{project.location}</span>
+                  <p className="text-muted-foreground text-sm leading-relaxed mb-6 h-10 line-clamp-2">
+                    {project.description}
+                  </p>
+                  
+                  <div className="flex items-center justify-between pt-4 border-t border-border/60">
+                    <div className="flex items-center gap-2 text-sm font-semibold text-foreground">
+                      <MapPin className="w-4 h-4 text-primary" />
+                      {project.location}
                     </div>
-                    <div className="text-sm text-muted-foreground">
-                      Client: {project.client}
-                    </div>
+                    <ArrowRight className="w-4 h-4 text-primary opacity-0 group-hover:opacity-100 transition-all -translate-x-2 group-hover:translate-x-0" />
                   </div>
                 </div>
               </div>
@@ -305,39 +247,37 @@ const ProjectsPage = () => {
 
           {/* Empty State */}
           {filteredProjects.length === 0 && (
-            <div className="text-center py-16">
-              <p className="text-muted-foreground text-lg">
-                No projects found in this category.
-              </p>
+            <div className="text-center py-32 rounded-3xl border-2 border-dashed border-muted">
+              <p className="text-muted-foreground italic">No projects found in this category.</p>
             </div>
           )}
 
           {/* Pagination */}
           {totalPages > 1 && (
-            <div className="mt-12">
+            <div className="mt-16">
               <Pagination>
                 <PaginationContent>
                   <PaginationItem>
-                    <PaginationPrevious 
-                      onClick={() => setCurrentPage(prev => Math.max(1, prev - 1))}
-                      className={currentPage === 1 ? "pointer-events-none opacity-50" : "cursor-pointer"}
+                    <PaginationPrevious
+                      onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
+                      className={currentPage === 1 ? "opacity-20 pointer-events-none" : "cursor-pointer"}
                     />
                   </PaginationItem>
-                  {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
-                    <PaginationItem key={page}>
-                      <PaginationLink 
-                        onClick={() => setCurrentPage(page)}
-                        isActive={currentPage === page}
+                  {Array.from({ length: totalPages }, (_, i) => i + 1).map((p) => (
+                    <PaginationItem key={p}>
+                      <PaginationLink
+                        onClick={() => setCurrentPage(p)}
+                        isActive={currentPage === p}
                         className="cursor-pointer"
                       >
-                        {page}
+                        {p}
                       </PaginationLink>
                     </PaginationItem>
                   ))}
                   <PaginationItem>
-                    <PaginationNext 
-                      onClick={() => setCurrentPage(prev => Math.min(totalPages, prev + 1))}
-                      className={currentPage === totalPages ? "pointer-events-none opacity-50" : "cursor-pointer"}
+                    <PaginationNext
+                      onClick={() => setCurrentPage((p) => Math.min(totalPages, p + 1))}
+                      className={currentPage === totalPages ? "opacity-20 pointer-events-none" : "cursor-pointer"}
                     />
                   </PaginationItem>
                 </PaginationContent>
@@ -347,21 +287,18 @@ const ProjectsPage = () => {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="section-padding bg-gradient-water">
-        <div className="container-custom text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-primary-foreground mb-4">
-            Start Your Project Today
-          </h2>
-          <p className="text-lg text-primary-foreground/80 mb-8 max-w-2xl mx-auto">
-            Ready to work with Zimbabwe's leading water solutions provider? 
-            Contact us for a free consultation and quote.
+      {/* Refined CTA */}
+      <section className="py-24 bg-card border-t border-border">
+        <div className="container-custom px-4 text-center">
+          <h2 className="text-3xl md:text-4xl font-extrabold mb-4">Ready for a similar setup?</h2>
+          <p className="text-muted-foreground mb-10 max-w-lg mx-auto">
+            Get professional advice on borehole drilling, irrigation, or solar systems for your property.
           </p>
           <a
-            href="#contact"
-            className="inline-block px-8 py-4 bg-background text-primary font-semibold rounded-full hover:shadow-elevated transition-all duration-300"
+            href="/contact"
+            className="inline-flex items-center gap-2 px-10 py-4 bg-primary text-primary-foreground font-bold rounded-full transition-transform hover:scale-105 shadow-xl shadow-primary/20"
           >
-            Get a Free Quote
+            Get Expert Quote <ArrowRight className="w-5 h-5" />
           </a>
         </div>
       </section>
