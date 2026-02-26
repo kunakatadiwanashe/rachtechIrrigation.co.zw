@@ -36,7 +36,7 @@ const About = () => {
             
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-6">
               Your Trusted Partner in{" "}
-              <span className="text-gradient-nature">Water Solutions</span>
+              <span className="text-gradient-nature">Water Solutions & solar Specialist</span>
             </h2>
             
             <p className="text-lg text-muted-foreground mb-6">
