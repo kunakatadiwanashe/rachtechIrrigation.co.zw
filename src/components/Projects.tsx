@@ -12,6 +12,8 @@ import project1 from "@/assets/imgs/pic (3).jpeg";
 import project2 from "@/assets/imgs/pic (14).jpeg";
 import project3 from "@/assets/pump.jpeg";
 import project4 from "@/assets/project-farm.jpg";
+import p2 from "@/assets/1 (2).jpeg";
+import p3 from "@/assets/1 (3).jpeg";
 
 const Projects = () => {
   const [activeFilter, setActiveFilter] = useState("all");
@@ -59,19 +61,35 @@ const Projects = () => {
       image: project4,
       description: "20-hectare center pivot irrigation system",
     },
+    {
+      id: 5,
+      category: "Sanitation & Hygiene Infrastructure",
+      title: "Community Wash Station",
+      location: "Nkayi Rural",
+      image: p3,
+      description: "Multi-purpose infrastructure featuring cattle troughs and hygiene stations.",
+    },
+    {
+      id: 6,
+      category: "Sanitation & Hygiene Infrastructure",
+      title: "Public Sanitation Block",
+      location: "Beitbridge Outpost",
+      image: p2,
+      description: "Sustainable sanitation facilities integrated with solar lighting for safety.",
+    },
   ];
 
   // useMemo prevents unnecessary re-calculations
   const filteredProjects = useMemo(() => {
     return activeFilter === "all"
-      ? projects.slice(0, 4) // Show only first 4 on home/featured section
+      ? projects.slice(0, 6) // Show only first 4 on home/featured section
       : projects.filter((p) => p.category === activeFilter);
   }, [activeFilter]);
 
   return (
     <section id="projects" className="section-padding bg-muted/30 border-t border-border/40">
       <div className="container-custom">
-        
+
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
           <div className="max-w-2xl">
@@ -82,11 +100,11 @@ const Projects = () => {
               Featured <span className="text-primary">Completed Work</span>
             </h2>
           </div>
-          <Link 
-            to="/projects" 
+          <Link
+            to="/projects"
             className="group inline-flex items-center gap-2 font-bold text-primary hover:text-primary/80 transition-all"
           >
-            View Full Portfolio 
+            View Full Portfolio
             <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
           </Link>
         </div>
@@ -97,11 +115,10 @@ const Projects = () => {
             <button
               key={filter.id}
               onClick={() => setActiveFilter(filter.id)}
-              className={`px-5 py-2 rounded-full text-sm font-semibold transition-all duration-300 ${
-                activeFilter === filter.id
+              className={`px-5 py-2 rounded-full text-sm font-semibold transition-all duration-300 ${activeFilter === filter.id
                   ? "bg-primary text-primary-foreground shadow-lg shadow-primary/20"
                   : "bg-background text-muted-foreground hover:bg-muted border border-border"
-              }`}
+                }`}
             >
               {filter.label}
             </button>
@@ -109,7 +126,7 @@ const Projects = () => {
         </div>
 
         {/* Projects Grid */}
-        <div className="grid md:grid-cols-2 gap-8">
+        <div className="grid md:grid-cols-3 gap-8">
           {filteredProjects.map((project) => (
             <div
               key={project.id}
@@ -123,7 +140,7 @@ const Projects = () => {
                 />
                 {/* Overlay Gradient */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-                
+
                 {/* Category Badge */}
                 <div className="absolute top-4 left-4">
                   <span className="px-3 py-1 rounded-lg bg-white/10 backdrop-blur-md text-white text-[10px] uppercase font-extrabold tracking-widest border border-white/20">
@@ -142,7 +159,7 @@ const Projects = () => {
                   </div>
                 </div>
               </div>
-              
+
               <div className="p-6 bg-card">
                 <p className="text-muted-foreground leading-relaxed">
                   {project.description}
@@ -161,8 +178,8 @@ const Projects = () => {
 
         {/* Mobile View All Link */}
         <div className="mt-12 text-center md:hidden">
-          <Link 
-            href="/projects" 
+          <Link
+            to="/projects"
             className="inline-flex items-center gap-2 px-8 py-4 bg-primary text-primary-foreground font-bold rounded-full shadow-lg shadow-primary/20"
           >
             View All Projects <ArrowRight className="w-5 h-5" />
