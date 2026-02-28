@@ -103,12 +103,22 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* Bottom Bar */}
-        <div className="pt-8 border-t border-primary-foreground/10 text-center">
-          <p className="text-primary-foreground/60">
-            © {new Date().getFullYear()} Rachtech Irrigation Pvt Ltd. All rights reserved.
-          </p>
-        </div>
+{/* Bottom Bar */}
+<div className="pt-8 border-t border-primary-foreground/10 flex flex-col md:flex-row justify-between items-center gap-4">
+  <p className="text-primary-foreground/60 text-sm">
+    © {new Date().getFullYear()} Rachtech Irrigation Pvt Ltd. All rights reserved.
+  </p>
+  
+  <p className="text-primary-foreground/60 text-sm">
+    Developed and Maintained by{" "}
+    <a 
+      href="#" 
+      className="text-primary hover:underline font-medium transition-colors"
+    >
+      Kuntech
+    </a>
+  </p>
+</div>
       </div>
     </footer>
   );
