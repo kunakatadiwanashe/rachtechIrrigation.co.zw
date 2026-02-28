@@ -1,4 +1,7 @@
 {
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
+  "installCommand": "npm install",
   "rewrites": [
     {
       "source": "/api/:path*",
@@ -6,7 +9,7 @@
     }
   ],
   "functions": {
-    "api/**/*.{js,ts}": {
+    "api/contact.ts": {
       "runtime": "nodejs18.x",
       "memory": 1024,
       "maxDuration": 10
