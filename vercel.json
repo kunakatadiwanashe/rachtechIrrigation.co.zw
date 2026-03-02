@@ -1,7 +1,9 @@
 {
+  "nodeVersion": "18.x",
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
   "installCommand": "npm install",
+  "framework": "vite",
   "rewrites": [
     {
       "source": "/api/:path*",
