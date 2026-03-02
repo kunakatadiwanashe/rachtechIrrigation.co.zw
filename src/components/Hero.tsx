@@ -1,6 +1,7 @@
 import { ArrowRight, CheckCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import heroImage from "@/assets/bore.jpeg";
+import Image from "next/image";
 
 const Hero = () => {
   const highlights = [
@@ -63,7 +64,7 @@ const Hero = () => {
           {/* Hero Image */}
           <div className="relative animate-fade-in hidden lg:block">
             <div className="relative rounded-2xl overflow-hidden shadow-elevated">
-              <img
+              <Image
                 src={heroImage}
                 alt="Professional borehole drilling and irrigation equipment"
                 className="w-full h-[500px] object-cover object-bottom"

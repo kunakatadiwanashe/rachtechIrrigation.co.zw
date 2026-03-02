@@ -1,19 +1,19 @@
+"use client";
 
 
-
-import { useState, useMemo } from "react";// Use 'react-router-dom' if not using Next.js
 import { ArrowRight, MapPin } from "lucide-react";
-import { Link } from "react-router-dom";
+import Link from "next/link";
+import { useState, useMemo } from "react";
 
 
-
-// Asset Imports
 import project1 from "@/assets/imgs/pic (3).jpeg";
 import project2 from "@/assets/imgs/pic (14).jpeg";
 import project3 from "@/assets/pump.jpeg";
 import project4 from "@/assets/project-farm.jpg";
 import p2 from "@/assets/1 (2).jpeg";
 import p3 from "@/assets/1 (3).jpeg";
+import Image from "next/image";
+
 
 const Projects = () => {
   const [activeFilter, setActiveFilter] = useState("all");
@@ -101,7 +101,7 @@ const Projects = () => {
             </h2>
           </div>
           <Link
-            to="/projects"
+            href="/projects"
             className="group inline-flex items-center gap-2 font-bold text-primary hover:text-primary/80 transition-all"
           >
             View Full Portfolio
@@ -133,7 +133,7 @@ const Projects = () => {
               className="group bg-card rounded-3xl overflow-hidden border border-border/50 shadow-sm hover:shadow-xl transition-all duration-500"
             >
               <div className="relative h-72 overflow-hidden">
-                <img
+                <Image
                   src={project.image}
                   alt={project.title}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
@@ -179,7 +179,7 @@ const Projects = () => {
         {/* Mobile View All Link */}
         <div className="mt-12 text-center md:hidden">
           <Link
-            to="/projects"
+            href="/projects"
             className="inline-flex items-center gap-2 px-8 py-4 bg-primary text-primary-foreground font-bold rounded-full shadow-lg shadow-primary/20"
           >
             View All Projects <ArrowRight className="w-5 h-5" />
