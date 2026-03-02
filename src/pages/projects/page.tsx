@@ -12,6 +12,7 @@ import {
   PaginationPrevious,
 } from "@/components/ui/pagination";
 
+import Image from "next/image";
 // Icons
 import { MapPin, Calendar, ArrowRight } from "lucide-react";
 
@@ -26,13 +27,14 @@ import p3 from "@/assets/1 (3).jpeg";
 import p4 from "@/assets/1 (4).jpeg";
 import p5 from "@/assets/1 (5).jpeg";
 import cen from "@/assets/project-farm.jpg";
+import { StaticImageData } from "next/image";
 
 interface Project {
   id: number;
   category: string;
   title: string;
   location: string;
-  image: string;
+  image: string | StaticImageData;
   description: string;
   year: string;
 }
@@ -204,10 +206,11 @@ const ProjectsPage = () => {
                 className="group bg-card rounded-2xl overflow-hidden border border-border/40 hover:border-primary/30 transition-all duration-500 hover:shadow-2xl hover:shadow-primary/5"
               >
                 <div className="relative h-64 overflow-hidden">
-                  <img
-                    src={project.image}
+                  <Image
+                    src={project.image as any}
                     alt={project.title}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    fill
+                    className="object-cover transition-transform duration-700 group-hover:scale-105"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent" />
                   

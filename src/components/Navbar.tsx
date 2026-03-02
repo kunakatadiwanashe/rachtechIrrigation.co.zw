@@ -1,11 +1,14 @@
+"use client";
+
 import { useState } from "react";
 import { Menu, X, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 
 
 
 import Logo from "/src/assets/Logo.png"
+import Image from "next/image";
 
 
 const Navbar = () => {
@@ -30,7 +33,7 @@ const Navbar = () => {
       );
     }
     return (
-      <Link to={href} className={className} onClick={onClick}>
+      <Link href={href} className={className} onClick={onClick}>
         {children}
       </Link>
     );
@@ -40,9 +43,9 @@ const Navbar = () => {
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-md border-b border-border">
       <div className="container-custom section-padding py-4">
         <div className="flex items-center justify-between">
-<Link to="/" className="flex items-center gap-2">
+<Link href="/" className="flex items-center gap-2">
   <div className="w-40 h-18 md:w-48 md:h-28 lg:w-[170px] lg:h-[60px] flex items-left justify-center">
-    <img
+    <Image
       src={Logo}
       alt="Rachtech Irrigation Pvt Ltd Logo"
       className="w-full h-full object-contain"

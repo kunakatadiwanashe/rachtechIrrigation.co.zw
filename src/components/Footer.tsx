@@ -1,6 +1,9 @@
+"use client";
+
 import { Droplets, MapPin, Phone, Mail, Facebook, Instagram, Twitter } from "lucide-react";
 
 import Logo from "/src/assets/Logo.png"
+import Image from "next/image";
 
 const Footer = () => {
   const quickLinks = [
@@ -27,7 +30,7 @@ const Footer = () => {
           <div>
             <a href="#home" className="flex items-center mb-2">
   <div className="w-40 h-24 md:w-48 md:h-28 lg:w-56 lg:h-32 flex items-left justify-center">
-    <img
+    <Image
       src={Logo}
       alt="Rachtech Irrigation Pvt Ltd Logo"
       className="w-full h-full object-contain"
