@@ -1,8 +1,5 @@
 {
-  "nodeVersion": "18.x",
-  "buildCommand": "npm run build",
-  "installCommand": "npm install",
-  "framework": "nextjs",
+  "version": 2,
   "rewrites": [
     {
       "source": "/api/:path*",
