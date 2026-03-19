@@ -15,7 +15,15 @@ export const metadata: Metadata = {
   description:
     "Professional borehole drilling, solar borehole installation and irrigation systems in Zimbabwe. Reliable water solutions for farms, homes and businesses.",
   icons: {
-    icon: "/favicon.png",
+    icon: [
+      { url: "/favicon.ico" },
+      { url: "/favicon-96x96.png", sizes: "96x96", type: "image/png" },
+      { url: "/favicon.svg", type: "image/svg+xml" },
+    ],
+    apple: [
+      { url: "/apple-touch-icon.png", sizes: "180x180" },
+    ],
+    shortcut: ["/favicon.ico"],
   },
   keywords: [
     "borehole drilling Zimbabwe",

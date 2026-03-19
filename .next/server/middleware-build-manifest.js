@@ -1,18 +1,1 @@
-self.__BUILD_MANIFEST = {
-  "polyfillFiles": [
-    "static/chunks/polyfills.js"
-  ],
-  "devFiles": [],
-  "ampDevFiles": [],
-  "lowPriorityFiles": [],
-  "rootMainFiles": [],
-  "pages": {
-    "/_app": []
-  },
-  "ampFirstPages": []
-};
-self.__BUILD_MANIFEST.lowPriorityFiles = [
-"/static/" + process.env.__NEXT_BUILD_ID + "/_buildManifest.js",
-,"/static/" + process.env.__NEXT_BUILD_ID + "/_ssgManifest.js",
-
-];
+self.__BUILD_MANIFEST={polyfillFiles:["static/chunks/polyfills-42372ed130431b0a.js"],devFiles:[],ampDevFiles:[],lowPriorityFiles:[],rootMainFiles:["static/chunks/webpack-443657aa38d3177a.js","static/chunks/fd9d1056-a86d52f6b747304e.js","static/chunks/117-10138736daf762ac.js","static/chunks/main-app-0bde7fb93d33b733.js"],pages:{"/Index":["static/chunks/webpack-443657aa38d3177a.js","static/chunks/framework-f575d91e4a2a361e.js","static/chunks/main-171cc9e40f7a6520.js","static/chunks/cb355538-07bc003db148b8c4.js","static/chunks/664-294e852b56958d79.js","static/chunks/30-e79b57df91aede2d.js","static/chunks/924-56fae3907734ee47.js","static/chunks/pages/Index-247a028ba953d6ca.js"],"/NotFound":["static/chunks/webpack-443657aa38d3177a.js","static/chunks/framework-f575d91e4a2a361e.js","static/chunks/main-171cc9e40f7a6520.js","static/chunks/664-294e852b56958d79.js","static/chunks/pages/NotFound-dd6cbf0398759ae2.js"],"/_app":["static/chunks/webpack-443657aa38d3177a.js","static/chunks/framework-f575d91e4a2a361e.js","static/chunks/main-171cc9e40f7a6520.js","static/chunks/pages/_app-72b849fbd24ac258.js"],"/_error":["static/chunks/webpack-443657aa38d3177a.js","static/chunks/framework-f575d91e4a2a361e.js","static/chunks/main-171cc9e40f7a6520.js","static/chunks/pages/_error-7ba65e1336b92748.js"],"/projects/page":["static/chunks/webpack-443657aa38d3177a.js","static/chunks/framework-f575d91e4a2a361e.js","static/chunks/main-171cc9e40f7a6520.js","static/chunks/cb355538-07bc003db148b8c4.js","static/chunks/664-294e852b56958d79.js","static/chunks/30-e79b57df91aede2d.js","static/chunks/924-56fae3907734ee47.js","static/chunks/pages/projects/page-a505c51477d76235.js"]},ampFirstPages:[]},self.__BUILD_MANIFEST.lowPriorityFiles=["/static/"+process.env.__NEXT_BUILD_ID+"/_buildManifest.js",,"/static/"+process.env.__NEXT_BUILD_ID+"/_ssgManifest.js"];
