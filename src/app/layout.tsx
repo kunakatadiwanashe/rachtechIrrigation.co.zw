@@ -10,10 +10,13 @@ const inter = Inter({ subsets: ["latin"] });
 
 
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "Borehole Drilling & Irrigation Systems in Zimbabwe | RachTech Irrigation",
   description:
     "Professional borehole drilling, solar borehole installation and irrigation systems in Zimbabwe. Reliable water solutions for farms, homes and businesses.",
+  icons: {
+    icon: "/favicon.png",
+  },
   keywords: [
     "borehole drilling Zimbabwe",
     "irrigation systems Zimbabwe",
