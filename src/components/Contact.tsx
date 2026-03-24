@@ -73,7 +73,7 @@ const Contact = () => {
     {
       icon: Phone,
       title: "Call Us",
-      details: ["+263 798 670 043", "+263 719 962 751"],
+      details: ["+263 789 670 043"],
     },
     {
       icon: Mail,
